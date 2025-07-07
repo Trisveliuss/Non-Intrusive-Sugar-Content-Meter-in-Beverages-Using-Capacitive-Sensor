@@ -19,6 +19,7 @@ void loop() {
   if (mode == 0) {
     if (butt == 1) {
       Serial.println("Short");
+      Serial.println("Mode 1");
       mode = 1;
     }
     if (dir == 1) {
@@ -27,26 +28,20 @@ void loop() {
     if (dir == 2) {
       OLED::previous();
     }
-
     OLED::menu();
 
   } else if (mode == 1) {
     if (butt == 2) {
       Serial.println("Long");
+      Serial.println("Mode 0");
       mode = 0;
     }
     switch (OLED::item_selected) {
       case 0:
-        if (butt == 1) {
-          Serial.println("Short");
-          OLED::brix();
-        }
+        OLED::brix();
         break;
       case 1:
-        if (butt == 1) {
-          Serial.println("Short");
-          OLED::gram();
-        }
+        OLED::gram();
         break;
       case 2:
         OLED::adc();

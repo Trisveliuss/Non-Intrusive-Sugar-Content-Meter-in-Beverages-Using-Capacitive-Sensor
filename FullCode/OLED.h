@@ -162,7 +162,7 @@ void previous() {
 void brix() {
   int16_t adc = ads.readADC_SingleEnded(0);
   float millivolt = adc * 0.0625;
-  float delta = milliVolts0 - start;
+  float delta = millivolt - start - 100;
   float brix = 240.35 - 0.3 * delta;
   display.clearDisplay();
   display.setFont(&FreeSansBold18pt7b);
@@ -171,7 +171,7 @@ void brix() {
   display.print(brix, 2);
   display.setFont(&FreeSansBold9pt7b);
   display.setTextColor(WHITE);
-  display.setCursor(0, 10);
+  display.setCursor(0, 13);
   display.print("Brix");
   display.display();
   delay(200);
@@ -180,7 +180,7 @@ void brix() {
 void gram() {
   int16_t adc = ads.readADC_SingleEnded(0);
   float millivolt = adc * 0.0625;
-  float delta = milliVolts0 - start;
+  float delta = millivolt - start - 100;
   float brix = 240.35 - 0.3 * delta;
   display.clearDisplay();
   display.setFont(&FreeSansBold18pt7b);
@@ -189,7 +189,7 @@ void gram() {
   display.print(brix, 2);
   display.setFont(&FreeSansBold9pt7b);
   display.setTextColor(WHITE);
-  display.setCursor(0, 10);
+  display.setCursor(0, 13);
   display.print("g/100 mL");
   display.display();
   delay(200);
@@ -204,7 +204,7 @@ void adc() {
   display.print(adc);
   display.setFont(&FreeSansBold9pt7b);
   display.setTextColor(WHITE);
-  display.setCursor(0, 10);
+  display.setCursor(0, 13);
   display.print("ADC");
   display.display();
   delay(200);
@@ -217,10 +217,10 @@ void volt() {
   display.setFont(&FreeSansBold18pt7b);
   display.setTextColor(WHITE);
   display.setCursor(5, 50);
-  display.print(millivolt, 3);
+  display.print(millivolt - start, 3);
   display.setFont(&FreeSansBold9pt7b);
   display.setTextColor(WHITE);
-  display.setCursor(0, 10);
+  display.setCursor(0, 13);
   display.print("mV");
   display.display();
   delay(200);
